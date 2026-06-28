@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design Studio</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <button class="new-btn" id="newChat">
+          <span class="plus">+</span> New design
+        </button>
+      </div>
+      <nav class="nav">
+        <div class="nav-item active">
+          <span class="dot"></span> Design Studio
+        </div>
+      </nav>
+      <div class="sidebar-section">Recent</div>
+      <div class="recent" id="recent">
+        <div class="recent-empty">No conversations yet</div>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="avatar">DS</div>
+        <div class="who">
+          <div class="who-name">Design Studio</div>
+          <div class="who-sub">Databricks</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <header class="topbar">
+        <div class="title" id="convTitle">New design</div>
+        <div class="model-picker">
+          <label class="model-label">Model</label>
+          <select id="modelSelect">
+            <option>Loading…</option>
+          </select>
+        </div>
+      </header>
+
+      <section class="chat" id="chat">
+        <div class="welcome" id="welcome">
+          <div class="welcome-mark">◆</div>
+          <h1>Design your app</h1>
+          <p>Pick a model in the top-right, describe what you want to build,
+             and I'll help you design it — step by step.</p>
+        </div>
+      </section>
+
+      <footer class="composer">
+        <div class="composer-inner">
+          <textarea id="input" rows="1"
+            placeholder="Describe what you want to build…"></textarea>
+          <button id="ideateBtn" class="ideate-btn" title="Ideate — generate app ideas">Ideate</button>
+          <button id="send" class="send-btn" title="Send">↑</button>
+          <button id="buildDeploy" class="build-btn" title="Build and deploy">Build & Deploy</button>
+          <button id="promoteBtn" class="promote-btn" title="Generate promotion documents" disabled>Promote ↗</button>
+        </div>
+        <div class="build-status" id="buildStatus" hidden></div>
+        <div class="build-result" id="buildResult" hidden></div>
+        <div id="ideaCards" class="idea-cards" hidden></div>
+        <div id="buildPromptCard" class="build-prompt-card" hidden></div>
+        <div class="composer-hint" id="hint">Ready</div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Promote modal -->
+  <div id="promoteModal" class="modal-overlay" hidden>
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title">Promote app</span>
+        <button id="promoteClose" class="modal-close">✕</button>
+      </div>
+      <div class="modal-section">
+        <p class="modal-desc">Select the documents to generate. They will be saved to your app's workspace folder.</p>
+        <div class="promote-checks">
+          <label><input type="checkbox" value="architecture" checked> Architecture</label>
+          <label><input type="checkbox" value="security" checked> Security</label>
+          <label><input type="checkbox" value="jira_stories" checked> Jira Stories</label>
+          <label><input type="checkbox" value="test_cases" checked> Test Cases</label>
+          <label><input type="checkbox" value="build_prompt" checked> Build Prompt</label>
+        </div>
+        <button id="promoteGenerate" class="promote-generate-btn">Generate &amp; Upload</button>
+      </div>
+      <div class="modal-results" id="promoteResults" hidden></div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

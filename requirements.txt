@@ -1,0 +1,6 @@
+fastapi
+uvicorn[standard]
+requests
+databricks-sdk
+pydantic
+pyyaml
